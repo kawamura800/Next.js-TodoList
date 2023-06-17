@@ -17,6 +17,14 @@ export default function Home() {
     setText("")
   };
 
+  // APIを叩く
+  const callAPI = async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users")
+    const users = await res.json();
+    console.log(users[0].username);
+    
+  }
+
   return (
     <main >
       <CenterTitle />
@@ -27,14 +35,7 @@ export default function Home() {
         <button onClick={addTodos}>aboutボタン</button>
       </div>
       <div>
-        <ul>
-          {todos.map((todo) => (
-            <li key={todo}>
-              <p>{todo}</p>
-              <button>完了</button>
-            </li>
-          ))}
-        </ul>
+        <button onClick={callAPI}>API GET</button>
       </div>
     </main>
   )
